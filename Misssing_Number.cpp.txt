@@ -1,0 +1,21 @@
+// Find The Missing Number
+#include<bits/stdc++.h>
+using namespace std;
+
+long long missing_element(long long arr[], long long n){
+    long long sum1=0;
+    long long sum2=0;
+    for(long long i=1; i<=n+1; i++){
+        sum1+=i;
+    }
+    for(long long i=0; i<n; i++){
+        sum2+=arr[i];
+    }
+    return sum1-sum2;
+}
+
+int main(){
+    long long arr[4]={2,3,4,5};
+    cout<<missing_element(arr,4);
+    return 0;
+}
