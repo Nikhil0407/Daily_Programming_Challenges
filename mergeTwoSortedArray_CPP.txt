@@ -1,0 +1,52 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+// class is Declared with name Merge.
+class Merge{
+    public:
+    vector<int>arr1;
+    vector<int>arr2;
+    int n;
+    void mergeArr();
+    void print(vector<int>);
+};
+// MergeArr Function for rearange the elements.
+void Merge :: mergeArr(){
+    int i=0,j=0;
+    while(i<n && j<n){
+        if(arr1[i]>arr2[j]){
+            int temp=arr1[i];
+            arr1[i]=arr2[j];
+            arr2[j]=temp;
+        }
+        int x=j;
+        while(x<n-1 && arr2[x]>arr2[x+1]){
+            int temp=arr2[x];
+            arr2[x]=arr2[x+1];
+            arr2[x+1]=temp;
+            x++;
+        }
+        i++;
+    }
+}
+
+//Print Function to print the array elements.
+void Merge :: print(vector<int>arr){
+    for(auto it : arr){
+        cout<<it<<" ";
+    }
+    cout<<endl;
+}
+int main(){
+    
+    Merge m;
+    // m is the instance of the class Merge.
+    m.arr1={1};
+    m.arr2={2};
+    m.n=m.arr1.size();
+    // n is the size of the both arrays.
+    m.mergeArr();
+    m.print(m.arr1);
+    m.print(m.arr2);
+    return 0;
+}
