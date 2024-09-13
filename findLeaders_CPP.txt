@@ -1,0 +1,39 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+//findLeader Function to find the array of Leaders.
+vector<int> findLeaders(int arr[], int n){
+    int maxi=INT_MIN;         // initial value of maxi is always minimum.
+    vector<int>Leaders;
+    for(int i=n-1; i>=0; i--){
+        if(arr[i]>maxi){
+            Leaders.push_back(arr[i]);
+            maxi=arr[i];
+        }
+    }
+    int i=0,j=Leaders.size()-1;
+    while(i<j){
+        int temp=Leaders[i];
+        Leaders[i]=Leaders[j];
+        Leaders[j]=temp;
+        i++;
+        j--;
+    }
+    return Leaders;
+}
+
+//print Function to print the Resultant Leaders array.
+void print(vector<int>Leaders){
+    int n=Leaders.size();
+    for(int i=0; i<n; i++){
+        cout<<Leaders[i]<<" ";
+    }
+}
+
+int main(){
+    int arr[4]={100,50,20,10};
+    int n=sizeof(arr)/sizeof(arr[0]);
+    vector<int>Leaders=findLeaders(arr,n);
+    print(Leaders);
+    return 0;
+}
