@@ -1,0 +1,33 @@
+# include<bits/stdc++.h>
+using namespace std;
+
+// helped function to calculate the total Water trapped in bar
+int helped(int height[], int n){
+    if(n==0){
+        return 0;
+    }
+    int r=n-1;  //right pointer
+    int l=0;   //left pointer
+    int leftMax=height[l];   // trcked the maximum height of the left side
+    int rightMax=height[r]; // tracked the maximum height of the right side
+    int ans=0;
+
+    while(l<r){
+        if(leftMax<rightMax){
+            l++;
+            leftMax=max(leftMax, height[l]);
+            ans+=leftMax-height[l];
+        }
+        else{
+            r--;
+            rightMax=max(rightMax, height[r]);
+            ans+=rightMax-height[r];
+        }
+    }
+    return ans;
+}
+int main(){
+    int height[]={0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
+    int n = sizeof(height)/sizeof(height[0]);
+    cout<<helped(height,n);
+}
