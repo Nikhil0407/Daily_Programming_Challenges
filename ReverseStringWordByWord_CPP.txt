@@ -1,0 +1,48 @@
+# include<bits/stdc++.h>
+using namespace std;
+string reverseStr(string str){
+    // Declared a Empty string, it store                   
+    //the sub_string of original string, when loop is moving forward
+    string temp=""; 
+    int i=0;
+    int n=str.length();//Declared a Empty stack for reversing the string (LIFO)
+    stack<string>st;
+    
+    // Below loop iterated on string to push the subtrings 
+    //of original string str 
+    while(i<n){
+        if(str[i]!=' '){
+            temp+=str[i];
+        }
+        else if(temp.length()!=0){
+            st.push(temp);
+            temp="";
+        }
+        i++;
+    }
+    if(temp.length()!=0){
+        st.push(temp);
+    }
+    
+    temp="";
+    // below loop iterated on stack to create a single string 
+    // which is the result of our program
+    while(!st.empty()){
+        temp+=st.top();
+        st.pop();
+        if(!st.empty()){
+            temp+=" ";
+        }
+    }
+    return temp;
+}
+
+int main(){
+    string str1="the sky is blue";
+    string str2="  hello world  ";
+    string str3="a good example";
+    cout<<reverseStr(str1)<<endl;
+    cout<<reverseStr(str2)<<endl;
+    cout<<reverseStr(str3)<<endl;
+    return 0;
+}
