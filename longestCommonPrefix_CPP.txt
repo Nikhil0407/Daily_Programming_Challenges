@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+// Function for finding longest common prefix string
+string commonPrefix(string str[], int n){
+  int f=str[0].length();
+  string ans="";
+  for(int i=0; i<f; i++){
+    for(int j=1; j<n; j++){
+      if(str[0][i]!=str[j][i]){
+        return ans;
+      }
+    }
+    ans+=str[0][i];
+  }
+  return ans;
+}
+int main(){
+  string str[] ={"flower", "flow", "flight"};
+  int n=sizeof(str)/sizeof(str[0]);
+  cout<<commonPrefix(str, n);
+  return 0;
+}
