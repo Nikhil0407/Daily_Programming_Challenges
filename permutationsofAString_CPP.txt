@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void permut(string& str, int idx, unordered_set<string> &set)
+{
+    if (idx == str.size() - 1) {
+        set.insert(str);
+        return;
+    }
+
+    for (int i = idx; i < str.size(); i++) {
+      
+        swap(str[idx], str[i]);
+        permut(str,idx+1,set);
+        swap(str[idx], str[i]);
+    }
+}
+
+void print(unordered_set<string>set){
+    for(auto it :set){
+        cout<<it<<endl;
+    }
+}
+int main(){
+    string str = "aab";
+    unordered_set<string>set;
+    permut(str,0,set);
+    print(set);
+    return 0;
+}
