@@ -1,0 +1,47 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+// checkValidation function is defined to check validity.
+bool checkValidation(string str){
+    stack<char>st;
+    for(int i=0; i<str.length(); i++){
+        if(str[i]=='('|| str[i]=='[' || str[i]=='{'){
+            st.push(str[i]);
+        }
+        else if(!st.empty()){
+            if(str[i]==')' && st.top()=='('){
+                st.pop();
+            }
+            else if(str[i]==']' && st.top()=='['){
+                st.pop();
+            }
+            else if(str[i]=='}' && st.top()=='{'){
+                st.pop();
+            }
+        }
+        else{
+            return false;
+        }
+    }
+    if(!st.empty()){
+        return false;
+    }
+    return true;
+}
+
+// result function is defined to print the result
+// i.e either valid or not valid
+void result(bool temp){
+    if(temp==1){
+        cout<<"true";
+    }
+    else{
+        cout<<"false";
+    }
+}
+int main(){
+    string str="{[}";
+    bool temp=checkValidation(str);
+    result(temp);
+    return 0;
+}
