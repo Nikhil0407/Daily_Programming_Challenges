@@ -1,0 +1,19 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int lcm(int n, int m)
+{
+    int s = min(n, m);
+    int g = max(n, m);
+    for (int i = g; ; i += g) {
+        if (i % s == 0)
+            return i;
+    }
+}
+int main()
+{
+    int N=4;
+    int M=6;
+    cout <<lcm(N,M);
+    return 0;
+}
