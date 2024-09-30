@@ -1,0 +1,43 @@
+#include<bits/stdc++.h>
+using namespace std;
+int firstElement(int arr[], int k, int n){
+    int result=-1;
+    unordered_map<int,int>mp;
+    for(int i=0; i<n; i++){
+        mp[arr[i]]++;
+    }
+    for(int i=0; i<n; i++){
+        if(mp[arr[i]]==k){
+            result=arr[i];
+            break;
+        }
+    }
+    return result;
+}
+int main(){
+    int arr1[] = {3, 1, 4, 4, 5, 2, 6, 1, 4};
+    int n=9;
+    int k = 2;
+    cout<<firstElement(arr1, k, n)<<endl;
+    
+    int arr2[] = {2, 3, 4, 2, 2, 5, 5};
+    n=7;
+    k = 2;
+    cout<<firstElement(arr2, k, n)<<endl;
+    
+    int arr3[] = {1, 1, 1, 1};
+    n=4;
+    k = 1;
+    cout<<firstElement(arr3, k, n)<<endl;
+    
+    int arr4[] = {10};
+    n=1;
+    k = 1;
+    cout<<firstElement(arr4, k, n)<<endl;
+    
+    int arr5[] = {6, 6, 6, 6, 7, 7, 8, 8, 8};
+    n=9;
+    k = 3;
+    cout<<firstElement(arr5, k, n)<<endl;
+    
+}
