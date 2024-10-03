@@ -1,0 +1,41 @@
+# include<bits/stdc++.h>
+using namespace std;
+
+struct Node{
+    int val;
+    Node*left;
+    Node*right;
+    
+    Node(int data){
+        val=data;
+        left=NULL;
+        right=NULL;
+    }
+};
+
+bool helped(Node* root, long mini, long maxi){
+        if(root==NULL){
+            return true;
+        }
+        if(root->val <= mini || root->val >= maxi){
+            return false;
+        }
+        return helped(root->left,mini,root->val) && helped(root->right,root->val,maxi);
+}
+
+
+int main(){
+     struct Node* root = new Node(10);
+     root->left = new Node(5);
+     root->right = new Node(15);
+     root->right->left = new Node(6);
+     root->right->right = new Node(20);
+     bool isValid=helped(root,LONG_MIN, LONG_MAX);
+     if(isValid==0){
+         cout<<"false";
+     }
+     else{
+         cout<<"true";
+     }
+     return 0;
+}
