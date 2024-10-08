@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int minLength(int coin[], int n, int r)
+{
+    int temp[r + 1];
+    temp[0] = 0;
+    for (int i = 1; i <= r; i++)
+        temp[i] = INT_MAX;
+
+    for (int i = 1; i <= r; i++) {
+        for (int j = 0; j < n; j++)
+            if (coin[j] <= i) {
+                int sub_res = temp[i - coin[j]];
+                if (sub_res != INT_MAX
+                    && sub_res + 1 < temp[i])
+                    temp[i] = sub_res + 1;
+            }
+    }
+    if (temp[r] == INT_MAX)
+        return -1;
+
+    return temp[r];
+}
+
+int main()
+{
+    int arr[] = {1,2,5};
+    int deno = 11;
+    int length = sizeof(arr)/sizeof(arr[0]);
+    cout<< minLength(arr, length, deno);
+    return 0;
+}
